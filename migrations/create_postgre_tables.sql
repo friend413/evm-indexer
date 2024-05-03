@@ -30,7 +30,7 @@ CREATE TABLE blocks (
     withdrawals_root text               -- Nullable string as text
 ) PARTITION BY RANGE (timestamp);   
 
-CREATE TABLE satschain.contracts (
+CREATE TABLE newchain.contracts (
     block_number integer,          -- UInt32 can be represented as integer in PostgreSQL
     chain bigint,                  -- UInt64 can be represented as bigint in PostgreSQL
     contract_address text,         -- String in ClickHouse is equivalent to text in PostgreSQL
@@ -55,7 +55,7 @@ CREATE TABLE logs (
   transaction_log_index smallint
 ) PARTITION BY RANGE (timestamp);
 
-CREATE TABLE satschain.erc20_transfers (
+CREATE TABLE newchain.erc20_transfers (
     address text,                  -- String maps to text in PostgreSQL
     amount numeric,                -- UInt256 is not directly supported, numeric is used for arbitrary precision
     block_number integer,          -- UInt32 maps to integer
@@ -71,7 +71,7 @@ CREATE TABLE satschain.erc20_transfers (
     transaction_log_index smallint -- Nullable(UInt16) maps to smallint, can be NULL by default
 );
 
-CREATE TABLE satschain.erc721_transfers (
+CREATE TABLE newchain.erc721_transfers (
     address text,                  -- String maps to text in PostgreSQL
     block_number integer,          -- UInt32 maps to integer
     chain bigint,                  -- UInt64 maps to bigint
@@ -87,7 +87,7 @@ CREATE TABLE satschain.erc721_transfers (
     transaction_log_index smallint -- Nullable(UInt16) maps to smallint, can be NULL by default
 );
 
-CREATE TABLE satschain.erc1155_transfers (
+CREATE TABLE newchain.erc1155_transfers (
   address String,
   amounts Array(UInt256),
   block_number UInt32,
@@ -105,7 +105,7 @@ CREATE TABLE satschain.erc1155_transfers (
   transaction_log_index Nullable(UInt16)
 )
 
-CREATE TABLE satschain.dex_trades (
+CREATE TABLE newchain.dex_trades (
     address text,                  -- String maps to text in PostgreSQL
     block_number integer,          -- UInt32 maps to integer
     chain bigint,                  -- UInt64 maps to bigint
@@ -122,7 +122,7 @@ CREATE TABLE satschain.dex_trades (
     transaction_log_index smallint -- Nullable(UInt16) maps to smallint, can be NULL by default
 );
 
-CREATE TABLE satschain.traces (
+CREATE TABLE newchain.traces (
     action_type action_type,                   -- Using ENUM type created above
     address text,                              -- Nullable by default in PostgreSQL
     author text,                               -- Nullable by default
@@ -161,7 +161,7 @@ CREATE TYPE access_list_element AS (
 );
 
 -- Create the transactions table
-CREATE TABLE satschain.transactions (
+CREATE TABLE newchain.transactions (
     access_list access_list_element[],     -- Array of composite type
     base_fee_per_gas bigint,               -- UInt64, nullable
     block_hash text,
@@ -190,7 +190,7 @@ CREATE TABLE satschain.transactions (
     value numeric                          -- UInt256, using numeric for arbitrary precision
 );
 
-CREATE TABLE satschain.withdrawals (
+CREATE TABLE newchain.withdrawals (
     address text,                 -- String maps to text in PostgreSQL
     amount numeric,               -- UInt256 is not directly supported; numeric is used for arbitrary precision
     block_number integer,         -- UInt32 maps to integer

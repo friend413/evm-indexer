@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS satschain;
+CREATE DATABASE IF NOT EXISTS newchain;
 
-CREATE TABLE satschain.blocks (
+CREATE TABLE newchain.blocks (
   base_block_reward UInt256,
   base_fee_per_gas Nullable(UInt64),
   burned UInt256,
@@ -35,7 +35,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (hash, miner, chain, timestamp, number)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.contracts (
+CREATE TABLE newchain.contracts (
   block_number UInt32,
   chain UInt64,
   contract_address String,
@@ -46,7 +46,7 @@ ENGINE = ReplacingMergeTree()
 ORDER BY (contract_address, transaction_hash, creator, chain)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.logs (
+CREATE TABLE newchain.logs (
   address String,
   block_number UInt32,
   chain UInt64,
@@ -67,7 +67,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (transaction_hash, address, chain, topic0, log_index, timestamp)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.erc20_transfers (
+CREATE TABLE newchain.erc20_transfers (
   address String,
   amount UInt256,
   block_number UInt32,
@@ -87,7 +87,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (transaction_hash, address, chain, log_index, timestamp)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.erc721_transfers (
+CREATE TABLE newchain.erc721_transfers (
   address String,
   block_number UInt32,
   chain UInt64,
@@ -107,7 +107,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (transaction_hash, address, chain, log_index, timestamp)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.erc1155_transfers (
+CREATE TABLE newchain.erc1155_transfers (
   address String,
   amounts Array(UInt256),
   block_number UInt32,
@@ -129,7 +129,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (transaction_hash, address, chain, log_index, timestamp)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.dex_trades (
+CREATE TABLE newchain.dex_trades (
   address String,
   block_number UInt32,
   chain UInt64,
@@ -150,7 +150,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (transaction_hash, address, chain, log_index, timestamp)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.traces (
+CREATE TABLE newchain.traces (
   action_type Enum8('call' = 1, 'create' = 2, 'suicide' = 3, 'reward' = 4),
   address Nullable(String),
   author Nullable(String),
@@ -180,7 +180,7 @@ ENGINE = ReplacingMergeTree()
 ORDER BY (block_hash, trace_address)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.transactions (
+CREATE TABLE newchain.transactions (
   access_list Array(Tuple(String, Array(String))),
   base_fee_per_gas Nullable(UInt64),
   block_hash String,
@@ -213,7 +213,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (hash, from, to, timestamp, chain, method)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.withdrawals (
+CREATE TABLE newchain.withdrawals (
   address String,
   amount UInt256,
   block_number UInt32,
@@ -227,7 +227,7 @@ PARTITION BY toYYYYMM(timestamp)
 ORDER BY (address, block_number, chain, timestamp, validator_index)
 SETTINGS index_granularity = 8192;
 
-CREATE TABLE satschain.infoforsync (
+CREATE TABLE newchain.infoforsync (
   end_block UInt32,
   missing_blocks Array(UInt32),
   timestamp DateTime,

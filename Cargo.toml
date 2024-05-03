@@ -1,10 +1,10 @@
 [package]
-name = "satschain-indexer"
+name = "newchain-indexer"
 version = "1.4.0"
 license = "MIT"
 edition = "2021"
-repository = "https://github.com/satschain/explorerbackend"
-description = "Scalable SQL indexer for Satschain compatible blockchains"
+repository = "https://github.com/newchain/explorerbackend"
+description = "Scalable SQL indexer for Newchain compatible blockchains"
 
 [dependencies]
 actix-cors = "0.7.0"
@@ -40,5 +40,5 @@ default-features = false
 features = ["colors"]
 
 [[bin]]
-path = "bin/satschain-indexer.rs"
-name = "satschain-indexer"
+path = "bin/newchain-indexer.rs"
+name = "newchain-indexer"

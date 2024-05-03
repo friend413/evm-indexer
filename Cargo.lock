@@ -2820,6 +2820,39 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e4a24736216ec316047a1fc4252e27dabb04218aa4a3f37c6e7ddbf1f9782b54"
 
 [[package]]
+name = "newchain-indexer"
+version = "1.4.0"
+dependencies = [
+ "actix-cors",
+ "actix-web",
+ "array-bytes",
+ "chrono",
+ "clap",
+ "clickhouse",
+ "clickhouse-rs",
+ "dotenv",
+ "ethers",
+ "futures 0.3.28",
+ "hex",
+ "hyper",
+ "hyper-tls",
+ "jsonrpsee",
+ "jsonrpsee-http-client",
+ "jsonrpsee-ws-client",
+ "log",
+ "primitive-types",
+ "rand",
+ "serde",
+ "serde_bytes",
+ "serde_json",
+ "serde_repr",
+ "serde_with",
+ "simple_logger",
+ "tokio 1.33.0",
+ "url",
+]
+
+[[package]]
 name = "num-bigint"
 version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3675,39 +3708,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
 dependencies = [
  "winapi-util",
-]
-
-[[package]]
-name = "satschain-indexer"
-version = "1.4.0"
-dependencies = [
- "actix-cors",
- "actix-web",
- "array-bytes",
- "chrono",
- "clap",
- "clickhouse",
- "clickhouse-rs",
- "dotenv",
- "ethers",
- "futures 0.3.28",
- "hex",
- "hyper",
- "hyper-tls",
- "jsonrpsee",
- "jsonrpsee-http-client",
- "jsonrpsee-ws-client",
- "log",
- "primitive-types",
- "rand",
- "serde",
- "serde_bytes",
- "serde_json",
- "serde_repr",
- "serde_with",
- "simple_logger",
- "tokio 1.33.0",
- "url",
 ]
 
 [[package]]

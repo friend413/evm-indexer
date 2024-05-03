@@ -4,8 +4,8 @@ use std::env;
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "Satschain Indexer",
-    about = "Scalable SQL indexer for Satschain compatible blockchains."
+    name = "Newchain Indexer",
+    about = "Scalable SQL indexer for Newchain compatible blockchains."
 )]
 pub struct IndexerArgs {
     #[arg(
@@ -90,8 +90,8 @@ impl Config {
             env::var("DB_USER_NAME").expect("DB_USER_NAME must be set");
         let db_host: String =
             env::var("DB_HOST").expect("DB_HOST must be set");
-        let db_name: String = env::var("DB_NAME")
-            .unwrap_or_else(|_| "satschain".to_string());
+        let db_name: String =
+            env::var("DB_NAME").unwrap_or_else(|_| "newchain".to_string());
         let db_password: String = env::var("DB_USER_PASSWORD")
             .expect("DB_USER_PASSWORD must be set");
         let db_port: String =

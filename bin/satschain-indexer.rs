@@ -2,7 +2,7 @@ use actix_cors::Cors;
 use actix_web::{middleware, App, HttpServer};
 use dotenv::dotenv;
 use log::*;
-use satschain_indexer::{
+use newchain_indexer::{
     configs::Config,
     db::Database,
     explorer::routes::configure,
